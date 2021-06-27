@@ -6,12 +6,19 @@ namespace benefits
 {
     public static class ExtensionMethods
     {
-        public static List<AppointmentsDateInfo> ConvertToAppointmentDateInfoList(this List<DateTime> dates)
+        public static List<AppointmentsDateInfo> ConvertToAppointmentDateInfoList(this List<DateTime> dates, int selectedMonth, int selectedyear, int numberOfDaysInMonth)
         {
             var dict = new Dictionary<DateTime, int>();
+
+            for (int i = 1; i <= numberOfDaysInMonth; i++)
+            {
+                DateTime date = new DateTime(selectedyear, selectedMonth, i);
+                dict[date] = 0;
+            }
+            
             dates.ForEach(date =>
             {
-                dict[date] = dict.ContainsKey(date) ? ++dict[date] : 1;
+                ++dict[date];
             });
 
             List<AppointmentsDateInfo> appointmentsDateInfoList = dict

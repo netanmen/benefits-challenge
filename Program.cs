@@ -16,7 +16,7 @@ namespace benefits
         {
             List<DateTime> dates = GetDummyData();
 
-            List<AppointmentsDateInfo> listToPopulate = dates.ConvertToAppointmentDateInfoList();
+            List<AppointmentsDateInfo> listToPopulate = dates.ConvertToAppointmentDateInfoList(2, 2001, 28);
 
             var ctlAppointmentsDate = new AppointmentsDateControl();
             ctlAppointmentsDate.Populate(listToPopulate);
